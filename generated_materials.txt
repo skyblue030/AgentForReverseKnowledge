@@ -6,17 +6,19 @@
 - (C) 載入程式（Loader ）
 - (D) 多媒體（ Multimedia ）應用軟體
 **教材內容:**
-作業系統的核心部件主要負責系統的運行和管理，包括記憶體管理、進程調度、設備管理等。
+1. Which of the following is NOT a core component of a typical operating system?
 
-* **記憶體管理器 (Memory Manager):**  負責分配和管理系統的記憶體資源，確保不同的程序都能有效地使用記憶體，避免記憶體衝突和浪費。這是作業系統的核心功能之一。
+The question asks about the core components of an operating system (OS).  An OS is the fundamental software that manages computer hardware and software resources and provides common services for computer programs.  Let's analyze each option:
 
-* **排程器 (Scheduler):**  負責決定哪個程序應該在什麼時候運行，以最佳化系統的效能和資源利用率。這是作業系統的核心功能之一。
+* **(A) Memory Manager:** This component is crucial.  It allocates and manages computer memory, ensuring efficient use and preventing conflicts between different programs.  It handles tasks like paging, segmentation, and virtual memory.  This is a core OS function.
 
-* **載入程式 (Loader):**  負責將程序從儲存裝置載入到記憶體中，並準備好程序執行所需的環境。雖然不是最核心，但也是作業系統啟動和運行程序的必要組成部分。
+* **(B) Scheduler:** The scheduler is responsible for managing the execution of processes. It determines which process gets CPU time and when, aiming for efficient resource utilization and responsiveness. This is another fundamental component of an OS.
 
-* **多媒體 (Multimedia) 應用軟體:** 這屬於應用軟體的範疇，而非作業系統的核心部件。作業系統提供多媒體應用程式執行的平台和環境，但多媒體應用程式本身並非作業系統的核心組成部分。
+* **(C) Loader:** The loader is responsible for loading programs into memory and preparing them for execution. This involves tasks like linking, relocation, and setting up the program's execution environment. This is a vital part of the OS's functionality.
 
-因此，答案是 (D) 多媒體應用軟體。作業系統的核心部件主要負責系統的底層管理和資源分配，而多媒體應用程式是建立在作業系統之上的應用程式。
+* **(D) Multimedia (Multimedia) applications:** Multimedia applications, such as media players or video editors, are *not* core components of the operating system. They are application programs that run *on top* of the OS, utilizing its services (like the memory manager, scheduler, and file system) but not integral parts of the OS itself.
+
+Therefore, the correct answer is (D) because multimedia applications are user-level programs, not part of the OS kernel or its essential services.  The other options are all fundamental parts of the OS kernel responsible for managing system resources and executing programs.
 
 --------------------
 
@@ -31,18 +33,27 @@
 - (C) 2341
 - (D) 2314
 **教材內容:**
-電腦開機啟動（Booting）的過程大致如下：
+The question asks about the correct order of operations during the computer boot process. Let's break down the steps and analyze the options.
 
-1. **CPU 啟動後執行位於 ROM 中預設位置之指令（Bootstrap 程式）：** 電源開啟後，CPU 會先執行儲存在 ROM (唯讀記憶體) 中的開機程式 (Bootstrap Program)。這個程式非常小，它的主要功能是初始化硬體，並找到作業系統的開機載入程式。
+The boot process involves several crucial steps:
 
-2. **執行輸出入及各種硬體裝置之檢查：** Bootstrap 程式會執行基本的硬體檢查，確認硬體設備是否正常運作，例如記憶體、硬碟、鍵盤、滑鼠等等。
+1. **Power On Self Test (POST):**  When the computer is powered on, the CPU initiates a self-test of essential hardware components. This includes checking the RAM, CPU, and basic input/output devices.  This corresponds to option 2's "④ 執行輸出入及各種硬體裝置之檢查" and part of option 2's "②CPU 啟動後執行位於 ROM中預設位置之指令亦即開機載入程式（ Bootstrap ）".  The BIOS (Basic Input/Output System), stored in ROM, performs this test.
 
-3. **將作業系統核心載入主記憶體：**  Bootstrap 程式找到作業系統的開機載入程式後，會將其載入到主記憶體中。
+2. **Bootstrap Loader:** After the POST, the BIOS loads a small program called the bootstrap loader from ROM. This loader is responsible for locating and loading the operating system (OS) kernel. This corresponds to the remaining part of option 2's "②CPU 啟動後執行位於 ROM中預設位置之指令亦即開機載入程式（ Bootstrap ）".
 
-4. **執行作業系統：**  作業系統核心載入主記憶體後，便開始執行，系統正式啟動，使用者可以開始使用電腦。
+3. **Loading the OS Kernel:** The bootstrap loader loads the operating system kernel into the main memory (RAM). This is represented by option 2's "③將作業系統核心載入主記憶體".
 
+4. **Execution of the OS:** Once the kernel is loaded, the operating system takes over, managing system resources and executing user applications. This is option 1's "①執行作業系統".
 
-因此，正確的順序是 2 → 4 → 3 → 1，所以答案是 (B) 2431。
+Therefore, the correct order is 2, 4, 3, 1.  This corresponds to option (B).
+
+Let's analyze why other options are incorrect:
+
+* **(A) 1234:** This is incorrect because the operating system cannot be executed before the kernel is loaded and the hardware is checked.
+* **(C) 2341:** This incorrectly places the hardware check after the OS kernel loading.
+* **(D) 2314:** This also incorrectly places the hardware check after the kernel loading.
+
+In summary, the correct sequence reflects the fundamental stages of booting a computer, starting with hardware checks, loading the bootstrap program, loading the OS kernel, and finally, initiating the OS.  The correct answer is (B) 2431.
 
 --------------------
 
@@ -56,17 +67,22 @@
 - (C) 換更快的週邊設備
 - (D) 降低多程式度（ degree of multiprogramming ）
 **教材內容:**
-這個題目描述了一個需求分頁系統，其中CPU使用率只有20%，Paging Drum使用率卻高達93%，其他週邊I/O使用率為12%。這表示系統的瓶頸在於Paging Drum，也就是虛擬記憶體的磁碟交換速度太慢。
+The question describes a computer system using demand paging and provides utilization metrics: CPU utilization at 20%, Paging Drum utilization at 93%, and other I/O utilization at 12%.  The goal is to identify the best strategy to improve CPU utilization.
 
-(A) 換更快CPU：CPU使用率低，換更快CPU不會改善系統整體效能，因為瓶頸不在CPU。
+The key concept here is **I/O-bound vs. CPU-bound processes** and the impact of demand paging on system performance.  Demand paging brings pages into memory only when needed.  A high paging drum utilization (93%) indicates that the system is spending a significant amount of time swapping pages between main memory and secondary storage (the paging drum). This is a major bottleneck, significantly limiting CPU utilization.
 
-(B) 找一個更大的Paging Drum：更大的Paging Drum並不能直接提升速度，反而可能增加尋址時間，問題仍然存在。
+Let's analyze the options:
 
-(C) 換更快週邊設備：其他週邊I/O使用率只有12%，不是系統瓶頸，所以換更快設備沒有顯著效果。
+* **(A) Replacing the CPU with a faster one:** While a faster CPU would improve processing speed for the tasks currently in memory, it won't address the core problem—the extremely high paging drum utilization. The CPU is mostly idle because it's waiting for data from the paging drum.  A faster CPU won't change this waiting time.
 
-(D) 降低多程式度：降低多程式度會減少同時執行的程序數量，減少Paging Drum的負載，從而提升Paging Drum的效率，進而提升整體系統效能，解決CPU使用率低的根本原因。
+* **(B) Getting a larger Paging Drum:** A larger paging drum would increase the amount of storage available, but it doesn't directly reduce the time spent waiting for page swaps. The high utilization suggests the problem isn't a lack of space, but rather the frequency of page swaps.
 
-因此，最佳策略是(D)降低多程式度。
+* **(C) Replacing peripherals with faster ones:**  The I/O utilization is only 12%, which is relatively low.  Improving I/O speed won't significantly impact the CPU utilization, which is primarily constrained by the paging drum.
+
+* **(D) Reducing the degree of multiprogramming:** This is the best solution.  A high degree of multiprogramming leads to more processes competing for memory.  This increases the likelihood of page faults (demanding pages from the paging drum), hence the high paging drum utilization. By reducing the number of concurrently running processes, the demand on the paging drum decreases, freeing up the CPU to execute processes more efficiently.  This directly addresses the bottleneck and improves CPU utilization.
+
+
+Therefore, the correct answer is (D).  The high paging drum utilization is the bottleneck, and reducing the multiprogramming degree directly addresses this bottleneck.  The other options address symptoms, not the root cause.
 
 --------------------
 
@@ -79,14 +95,22 @@
 - (C) AVL 樹（AVL Tree ）
 - (D) 佇列
 **教材內容:**
-瀏覽器的「上一頁」功能需要儲存使用者瀏覽網頁的順序，並按照反向順序逐一返回。堆疊 (Stack) 是一種後進先出 (LIFO) 的資料結構，符合這個需求。使用者瀏覽的每個網頁都像是一個元素被壓入堆疊中，點選「上一頁」則相當於從堆疊中彈出 (pop) 最上面(最後瀏覽) 的元素。
+The question asks which data structure is most suitable for implementing the "back" button functionality in a web browser, allowing users to navigate back to the previously visited webpage.
 
-其他選項：
-* 堆積 (Heap)：主要用於優先佇列的實作，與網頁瀏覽順序無關。
-* AVL 樹 (AVL Tree)：是一種平衡二元搜尋樹，用於高效的搜尋、插入和刪除操作，但對於「上一頁」功能來說，其效率優勢並不明顯，且複雜度較高。
-* 佇列 (Queue)：是一種先進先出 (FIFO) 的資料結構，不符合網頁瀏覽的逆序返回需求。
+The core concept here is the Last-In, First-Out (LIFO) principle.  When a user visits a webpage, that page's URL is added to the history. When the user clicks "back," the most recently visited page (the last one added) should be displayed. This behavior perfectly aligns with the LIFO structure of a stack.
 
-因此，堆疊是最適合實作瀏覽器「上一頁」功能的資料結構。
+Let's analyze the options:
+
+* **(A) Heap:** A heap is a tree-based data structure that satisfies the heap property (e.g., in a min-heap, the parent node is always smaller than its children).  Heaps are typically used for priority queues or heapsort, not for managing browsing history where LIFO is needed.  Therefore, a heap is not suitable.
+
+* **(B) Stack:** A stack is a LIFO data structure.  The "push" operation adds an element to the top, and the "pop" operation removes the top element.  This directly mirrors the browser's back button functionality:  pushing URLs onto the stack as pages are visited and popping them off as the user navigates back.  Therefore, a stack is the most appropriate data structure.
+
+* **(C) AVL Tree:** An AVL tree is a self-balancing binary search tree.  While efficient for searching, insertion, and deletion, it doesn't inherently support the LIFO behavior required for the back button.  There's no natural way to efficiently access the most recently added element without traversing the tree.
+
+* **(D) Queue:** A queue is a FIFO (First-In, First-Out) data structure.  This is the opposite of what's needed for the back button.  The first page visited would be the last one accessed, which is incorrect.
+
+
+In summary, the stack's LIFO nature perfectly matches the requirement of accessing the most recently visited webpage first, making it the ideal choice for implementing the "back" button functionality in a web browser.  Therefore, the correct answer is (B).
 
 --------------------
 

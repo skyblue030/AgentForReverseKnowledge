@@ -1,0 +1,208 @@
+**問題 1:**
+**題目:** 1. 一般作業系統的核心部件不含下列那一項？
+**處理時發生錯誤:**
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 49, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\base.py", line 34, in __call__
+    outputs = lm(**inputs_, **lm_kwargs)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 52, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format=response_format)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 332, in <module>
+    response_prediction = mcq_explainer_module.forward(
+        context=context_segment,
+    ...<4 lines>...
+        option_d=question_data['options'].get('D', '[N/A]')
+    )
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 258, in forward
+    result = self.generate_explanation(context=context, question_stem=question_stem,
+                                       option_a=option_a, option_b=option_b,
+                                       option_c=option_c, option_d=option_d)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\utils\callback.py", line 266, in wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 73, in __call__
+    return self.forward(**kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 100, in forward
+    completions = adapter(
+        lm,
+    ...<3 lines>...
+        inputs=kwargs,
+    )
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 55, in __call__
+    return JSONAdapter()(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 59, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format={"type": "json_object"})
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+
+
+--------------------
+
+**問題 2:**
+**題目:** 2. 請重組下列電腦開機啟動（ Booting）時各項運作的正確順序：
+**處理時發生錯誤:**
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 49, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\base.py", line 34, in __call__
+    outputs = lm(**inputs_, **lm_kwargs)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 52, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format=response_format)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 332, in <module>
+    response_prediction = mcq_explainer_module.forward(
+        context=context_segment,
+    ...<4 lines>...
+        option_d=question_data['options'].get('D', '[N/A]')
+    )
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 258, in forward
+    result = self.generate_explanation(context=context, question_stem=question_stem,
+                                       option_a=option_a, option_b=option_b,
+                                       option_c=option_c, option_d=option_d)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\utils\callback.py", line 266, in wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 73, in __call__
+    return self.forward(**kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 100, in forward
+    completions = adapter(
+        lm,
+    ...<3 lines>...
+        inputs=kwargs,
+    )
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 55, in __call__
+    return JSONAdapter()(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 59, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format={"type": "json_object"})
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+
+
+--------------------
+
+**問題 3:**
+**題目:** 3. 在一個採用需求分頁機制的計算機系統中，現 有使用效率量測如下： (1) CPU 使
+**處理時發生錯誤:**
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 49, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\base.py", line 34, in __call__
+    outputs = lm(**inputs_, **lm_kwargs)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 52, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format=response_format)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 332, in <module>
+    response_prediction = mcq_explainer_module.forward(
+        context=context_segment,
+    ...<4 lines>...
+        option_d=question_data['options'].get('D', '[N/A]')
+    )
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 258, in forward
+    result = self.generate_explanation(context=context, question_stem=question_stem,
+                                       option_a=option_a, option_b=option_b,
+                                       option_c=option_c, option_d=option_d)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\utils\callback.py", line 266, in wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 73, in __call__
+    return self.forward(**kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 100, in forward
+    completions = adapter(
+        lm,
+    ...<3 lines>...
+        inputs=kwargs,
+    )
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 55, in __call__
+    return JSONAdapter()(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 59, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format={"type": "json_object"})
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+
+
+--------------------
+
+**問題 4:**
+**題目:** 4. 全球資訊網（ WWW）的瀏覽器都提供「上一頁」的功能，讓使用者退回前一
+**處理時發生錯誤:**
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 49, in __call__
+    return super().__call__(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\base.py", line 34, in __call__
+    outputs = lm(**inputs_, **lm_kwargs)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 52, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format=response_format)
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 332, in <module>
+    response_prediction = mcq_explainer_module.forward(
+        context=context_segment,
+    ...<4 lines>...
+        option_d=question_data['options'].get('D', '[N/A]')
+    )
+  File "c:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\OCR(control_group).py", line 258, in forward
+    result = self.generate_explanation(context=context, question_stem=question_stem,
+                                       option_a=option_a, option_b=option_b,
+                                       option_c=option_c, option_d=option_d)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\utils\callback.py", line 266, in wrapper
+    return fn(instance, *args, **kwargs)
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 73, in __call__
+    return self.forward(**kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\predict\predict.py", line 100, in forward
+    completions = adapter(
+        lm,
+    ...<3 lines>...
+        inputs=kwargs,
+    )
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\chat_adapter.py", line 55, in __call__
+    return JSONAdapter()(lm, lm_kwargs, signature, demos, inputs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\skybl\OneDrive\桌面\Apply_us_master_program\AgentForReverseKnowledge\.venv\Lib\site-packages\dspy\adapters\json_adapter.py", line 59, in __call__
+    outputs = lm(**inputs, **lm_kwargs, response_format={"type": "json_object"})
+TypeError: LiteLLMWrapper.__call__() missing 1 required positional argument: 'prompt'
+
