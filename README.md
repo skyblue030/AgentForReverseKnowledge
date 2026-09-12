@@ -7,9 +7,15 @@ concept being tested and an analysis of why each option is right or wrong. The n
 work *backwards* from assessment to knowledge. A past paper tells you what gets tested; it doesn't
 tell you why the answer is the answer.
 
-It is also a small comparison study. The same exam is run through two deliberately different
-pipelines — different text extraction, different prompt shape, different grounding rules — to see
-how much those choices, rather than the model, determine the quality of the output.
+I built it while preparing for Taiwanese graduate entrance exams. I was working through past papers
+by screenshotting each page, running OCR over the image, and pasting questions into a model one at a
+time to ask why the marked answer was the right one. That worked and it did not scale, and
+automating that loop is what this repository is.
+
+It is also a small comparison study. The same exam is run through two pipelines that differ in
+prompt shape, in grounding rules, and in what text the model is given — though not as independently
+as that sounds, because the second arm reuses the first arm's question parsing (see the coupling
+note below the table).
 
 Built on [DSPy](https://github.com/stanfordnlp/dspy) with a hand-written
 [LiteLLM](https://github.com/BerriAI/litellm) language-model adapter, against
@@ -27,15 +33,21 @@ data structures, digital logic, number systems, networking, and software enginee
 | | Experimental arm | Control arm |
 |---|---|---|
 | Script | `Agent(Experimental group).py` | `OCR(control_group).py` |
-| Text source | PDF text layer, via PyPDF2 | Rendered page images, via an image-OCR pass |
-| Context given to the model | none — the question and options only | the OCR text segment for that question |
+| Stem and options | parsed from the PDF text layer, via PyPDF2 | the same text, re-read from `generated_materials.txt` |
+| Extra context | none — stem and options only | that question's segment of the image-OCR text |
 | Prompt shape | one English textbook-style explanation per question | a separate explanation per option, plus an inferred answer |
 | Grounding | model answers from parametric knowledge | model is told to reason from the supplied segment |
 | Output | `generated_materials.txt` | `generated_explanations_output.txt` |
 
-The arms are not independent: the control script reads its structured question list from
-`generated_materials.txt`, so the experimental arm has to run first. All 40 questions flow through
-both arms.
+**The coupling.** The arms are not independent, and it is worth being precise about where they meet.
+The control script reads its structured question list from `generated_materials.txt`, so both arms
+see stems and options that came out of the PDF text layer; the image-OCR text reaches the control arm
+only through the `context` field. The experimental arm therefore has to run first, and the extraction
+comparison below is a comparison of what each source *makes available*, not of two fully separate
+pipelines.
+
+**Coverage.** The parsing code path covers all 40 questions. The outputs committed to this repository
+predate that rewrite and cover 4 — see Known limitations.
 
 ## Findings
 
@@ -46,7 +58,9 @@ Image OCR keeps them (`②④③①`). Across the paper the text layer preserves
 the OCR pass's 20. The tradeoff runs the other way too: on question 16 the text layer correctly
 reads `2ⁿ` and `ln n`, while OCR drops the exponent (`2`) and misreads `ln` as `In`. Neither source
 dominates, which is the argument for keeping both extraction paths in the repo rather than picking
-one and moving on.
+one and moving on. Given the coupling above, that argument has a concrete shape here: on question 2
+*both* arms receive the flattened `1234` options, and the control arm's OCR context segment is the
+only place the ①②③④ mapping still exists for it to recover from.
 
 **A grounded pipeline makes upstream data defects visible; an ungrounded one hides them.** An
 earlier revision split questions from options by line position, which truncated every multi-line
@@ -115,10 +129,11 @@ The LiteLLM wrapper still carries the `request_multimodal` path that step used.
 
 ## Known limitations
 
-- **The committed outputs are stale.** `generated_materials.txt` and
-  `generated_explanations_output.txt` are from a run that predates the parser rewrite: 4 questions,
-  with the truncated stems described above. Both arms need re-running to produce a 40-question
-  result, which is also what would make the comparison between them worth anything statistically.
+- **The committed outputs are stale.** The pipelines table above describes the code path; these two
+  files do not match it yet. `generated_materials.txt` and `generated_explanations_output.txt` are
+  from a run that predates the parser rewrite: 4 questions, with the truncated stems described above.
+  Both arms need re-running to produce a 40-question result, which is also what would make the
+  comparison between them worth anything statistically.
 - **OCR scaffolding leaks into the last context segment on each page.** Segments are cut at question
   markers, so the final question on a page also picks up `第1頁,共7頁`, `--- Page Break ---` and
   `--- OCR Start ---`. Visible in question 4's segment. This is the job a stubbed-out cleaning
