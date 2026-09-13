@@ -7,10 +7,9 @@ concept being tested and an analysis of why each option is right or wrong. The n
 work *backwards* from assessment to knowledge. A past paper tells you what gets tested; it doesn't
 tell you why the answer is the answer.
 
-I built it while preparing for Taiwanese graduate entrance exams. I was working through past papers
-by screenshotting each page, running OCR over the image, and pasting questions into a model one at a
-time to ask why the marked answer was the right one. That worked and it did not scale, and
-automating that loop is what this repository is.
+I built this after my own entrance exams were already behind me, as a skills exercise rather than out of need. The starting point was a tooling gap: at the time, chat interfaces could not read a PDF's text layer, so getting a document into a model meant screenshotting each page and running OCR over the image. Removing that step is what the extraction half of this repository is.
+
+Once extraction worked I needed something to point it at, and a past exam paper was a good target on two counts. The reverse-the-assessment idea was interesting on its own, and the document is typographically hostile in useful ways — Traditional Chinese, full-width punctuation, circled numerals, a superscript, and an embedded code block. Most of the findings below come from that hostility rather than from the model.
 
 It is also a small comparison study. The same exam is run through two pipelines that differ in
 prompt shape, in grounding rules, and in what text the model is given — though not as independently
